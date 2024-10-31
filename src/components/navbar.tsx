@@ -1,8 +1,8 @@
 import { cn } from "~/lib/utils";
-import { IconButton } from "~/components/tredici";
+import { Button, IconButton } from "~/components/tredici";
 import { useTheme } from "~/contexts/theme";
 import React, { useMemo } from "react";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
 
 const Navbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -20,10 +20,20 @@ const Navbar: React.FC = () => {
       )}
     >
       <h1 className={cn("text-2xl font-bold")}>Booru Downloader</h1>
-      <IconButton
-        icon={isDark ? <SunIcon /> : <MoonIcon />}
-        onClick={toggleTheme}
-      />
+      <div className={cn("flex gap-4")}>
+        <a
+          href="https://github.com/saverioscagnoli/booru-downloader"
+          target="_blank"
+        >
+          <Button leftIcon={<GitHubLogoIcon />} colorScheme="b/w">
+            Source
+          </Button>
+        </a>
+        <IconButton
+          icon={isDark ? <SunIcon /> : <MoonIcon />}
+          onClick={toggleTheme}
+        />
+      </div>
     </div>
   );
 };
